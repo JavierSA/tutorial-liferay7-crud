@@ -13,6 +13,11 @@
     <portlet:param name="idEscritor" value="<%=String.valueOf(escritor.getEscritorId())%>"/>
 </portlet:actionURL>
 
+<portlet:actionURL name="deleteEscritor" var="deleteEscritorUrl">
+    <portlet:param name="idEscritor" value="<%=String.valueOf(escritor.getEscritorId())%>"/>
+</portlet:actionURL>
+
 <liferay-ui:icon-menu>
     <liferay-ui:icon image="edit" message="Editar" url="<%=displayEscritorEditionUrl%>"/>
+    <liferay-ui:icon image="delete" message="Eliminar" url="<%=deleteEscritorUrl%>"/>
 </liferay-ui:icon-menu>

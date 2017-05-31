@@ -7,10 +7,9 @@ import com.liferay.portal.kernel.util.WebKeys;
 import org.osgi.service.component.annotations.Component;
 import tutoriales.liferay.crud.libro.service.EscritorLocalServiceUtil;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.Portlet;
-import javax.portlet.ProcessAction;
+import javax.portlet.*;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * @author jsanchez
@@ -29,6 +28,15 @@ import javax.portlet.ProcessAction;
         service = Portlet.class
 )
 public class MyMvcPortlet extends MVCPortlet {
+
+    @Override
+    public void render(RenderRequest renderRequest, RenderResponse renderResponse) throws IOException, PortletException {
+        final List escritores = EscritorLocalServiceUtil.getEscritors(0, Integer.MAX_VALUE);
+
+        renderRequest.setAttribute("escritores", escritores);
+
+        super.render(renderRequest, renderResponse);
+    }
 
     @ProcessAction(name = "addEscritor")
     public void addEscritor(ActionRequest request, ActionResponse response) {

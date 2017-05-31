@@ -33,7 +33,7 @@ public class MyMvcPortlet extends MVCPortlet {
 
     @Override
     public void render(RenderRequest renderRequest, RenderResponse renderResponse) throws IOException, PortletException {
-        final List escritores = EscritorLocalServiceUtil.getEscritors(0, Integer.MAX_VALUE);
+        final List<Escritor> escritores = EscritorLocalServiceUtil.getEscritors(0, Integer.MAX_VALUE);
 
         renderRequest.setAttribute("escritores", escritores);
 

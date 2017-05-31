@@ -57,4 +57,14 @@ public class MyMvcPortlet extends MVCPortlet {
         response.setRenderParameter("mvcPath", "/escritorEdit.jsp");
     }
 
+    @ProcessAction(name = "editEscritor")
+    public void editEscritor(ActionRequest request, ActionResponse response) throws IOException, PortletException, PortalException {
+        final String id = request.getParameter("idEscritor");
+        final String nombre = request.getParameter("nombreEscritor");
+
+        EscritorLocalServiceUtil.updateEscritor(Long.valueOf(id), nombre);
+
+        response.setRenderParameter("mvcPath", "/view.jsp");
+    }
+
 }

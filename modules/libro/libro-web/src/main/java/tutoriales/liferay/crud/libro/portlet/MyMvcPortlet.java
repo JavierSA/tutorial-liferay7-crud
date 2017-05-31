@@ -67,4 +67,11 @@ public class MyMvcPortlet extends MVCPortlet {
         response.setRenderParameter("mvcPath", "/view.jsp");
     }
 
+    @ProcessAction(name = "deleteEscritor")
+    public void deleteEscritor(ActionRequest request, ActionResponse response) throws IOException, PortletException, PortalException {
+        final String id = request.getParameter("idEscritor");
+
+        EscritorLocalServiceUtil.deleteEscritor(Long.valueOf(id));
+    }
+
 }

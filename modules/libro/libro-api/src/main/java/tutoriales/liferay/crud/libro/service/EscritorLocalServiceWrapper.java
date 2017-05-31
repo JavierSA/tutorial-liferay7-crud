@@ -376,6 +376,13 @@ public class EscritorLocalServiceWrapper implements EscritorLocalService,
 	}
 
 	@Override
+	public void addEscritor(long groupId, long companyId, long userId,
+		java.lang.String userName, java.lang.String nombre) {
+		_escritorLocalService.addEscritor(groupId, companyId, userId, userName,
+			nombre);
+	}
+
+	@Override
 	public void addLibroEscritor(long libroId, long escritorId) {
 		_escritorLocalService.addLibroEscritor(libroId, escritorId);
 	}

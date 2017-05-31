@@ -308,6 +308,9 @@ public interface EscritorLocalService extends BaseLocalService,
 	@Indexable(type = IndexableType.REINDEX)
 	public Escritor updateEscritor(Escritor escritor);
 
+	public void addEscritor(long groupId, long companyId, long userId,
+		java.lang.String userName, java.lang.String nombre);
+
 	public void addLibroEscritor(long libroId, long escritorId);
 
 	public void addLibroEscritor(long libroId, Escritor escritor);

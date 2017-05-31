@@ -351,6 +351,11 @@ public class EscritorLocalServiceUtil {
 		return getService().updateEscritor(escritor);
 	}
 
+	public static void addEscritor(long groupId, long companyId, long userId,
+		java.lang.String userName, java.lang.String nombre) {
+		getService().addEscritor(groupId, companyId, userId, userName, nombre);
+	}
+
 	public static void addLibroEscritor(long libroId, long escritorId) {
 		getService().addLibroEscritor(libroId, escritorId);
 	}

@@ -1,10 +1,12 @@
 package tutoriales.liferay.crud.libro.portlet;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
 import org.osgi.service.component.annotations.Component;
+import tutoriales.liferay.crud.libro.model.Escritor;
 import tutoriales.liferay.crud.libro.service.EscritorLocalServiceUtil;
 
 import javax.portlet.*;
@@ -44,6 +46,15 @@ public class MyMvcPortlet extends MVCPortlet {
         final String nombre = ParamUtil.getString(request, "nombreEscritor");
 
         EscritorLocalServiceUtil.addEscritor(td.getSiteGroupId(), td.getCompanyId(), td.getUser().getUserId(), td.getUser().getFullName(), nombre);
+    }
+
+    @ProcessAction(name = "displayEscritorEdition")
+    public void displayEscritorEdition(ActionRequest request, ActionResponse response) throws IOException, PortletException, PortalException {
+        final String id = request.getParameter("idEscritor");
+        final Escritor escritor = EscritorLocalServiceUtil.getEscritor(Long.valueOf(id));
+
+        request.setAttribute("escritor", escritor);
+        response.setRenderParameter("mvcPath", "/escritorEdit.jsp");
     }
 
 }

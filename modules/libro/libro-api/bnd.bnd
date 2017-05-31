@@ -1,0 +1,9 @@
+Bundle-Name: libro-api
+Bundle-SymbolicName: tutoriales.liferay.crud.libro.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	tutoriales.liferay.crud.libro.exception,\
+	tutoriales.liferay.crud.libro.model,\
+	tutoriales.liferay.crud.libro.service,\
+	tutoriales.liferay.crud.libro.service.persistence
+-includeresource: META-INF/service.xml=../libro-service/service.xml

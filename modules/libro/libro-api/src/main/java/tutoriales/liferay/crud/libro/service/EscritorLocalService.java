@@ -330,4 +330,7 @@ public interface EscritorLocalService extends BaseLocalService,
 	public void deleteLibroEscritors(long libroId, long[] escritorIds);
 
 	public void setLibroEscritors(long libroId, long[] escritorIds);
+
+	public void updateEscritor(long id, java.lang.String nombre)
+		throws PortalException;
 }

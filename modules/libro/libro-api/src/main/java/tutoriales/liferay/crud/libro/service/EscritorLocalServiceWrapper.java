@@ -437,6 +437,12 @@ public class EscritorLocalServiceWrapper implements EscritorLocalService,
 	}
 
 	@Override
+	public void updateEscritor(long id, java.lang.String nombre)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		_escritorLocalService.updateEscritor(id, nombre);
+	}
+
+	@Override
 	public EscritorLocalService getWrappedService() {
 		return _escritorLocalService;
 	}

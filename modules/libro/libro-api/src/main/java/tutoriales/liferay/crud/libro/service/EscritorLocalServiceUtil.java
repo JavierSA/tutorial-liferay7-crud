@@ -400,6 +400,11 @@ public class EscritorLocalServiceUtil {
 		getService().setLibroEscritors(libroId, escritorIds);
 	}
 
+	public static void updateEscritor(long id, java.lang.String nombre)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		getService().updateEscritor(id, nombre);
+	}
+
 	public static EscritorLocalService getService() {
 		return _serviceTracker.getService();
 	}

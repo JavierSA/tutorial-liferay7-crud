@@ -15,16 +15,17 @@
 package tutoriales.liferay.crud.libro.service.impl;
 
 import aQute.bnd.annotation.ProviderType;
+import com.liferay.portal.kernel.exception.PortalException;
 import tutoriales.liferay.crud.libro.model.Escritor;
 import tutoriales.liferay.crud.libro.model.impl.EscritorImpl;
 import tutoriales.liferay.crud.libro.service.base.EscritorLocalServiceBaseImpl;
 
 /**
  * The implementation of the escritor local service.
- *
+ * <p>
  * <p>
  * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link tutoriales.liferay.crud.libro.service.EscritorLocalService} interface.
- *
+ * <p>
  * <p>
  * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
  * </p>
@@ -36,7 +37,7 @@ import tutoriales.liferay.crud.libro.service.base.EscritorLocalServiceBaseImpl;
 @ProviderType
 public class EscritorLocalServiceImpl extends EscritorLocalServiceBaseImpl {
     /*
-	 * NOTE FOR DEVELOPERS:
+     * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. Always use {@link tutoriales.liferay.crud.libro.service.EscritorLocalServiceUtil} to access the escritor local service.
 	 */
@@ -51,6 +52,13 @@ public class EscritorLocalServiceImpl extends EscritorLocalServiceBaseImpl {
         escritor.setNombre(nombre);
 
         addEscritor(escritor);
+    }
+
+    public void updateEscritor(long id, String nombre) throws PortalException {
+        final Escritor escritor = getEscritor(id);
+        escritor.setNombre(nombre);
+
+        updateEscritor(escritor);
     }
 
 }

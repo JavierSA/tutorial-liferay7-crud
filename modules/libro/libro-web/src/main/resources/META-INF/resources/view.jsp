@@ -16,6 +16,7 @@
 
     <liferay-ui:search-container-row className="tutoriales.liferay.crud.libro.model.Escritor" modelVar="escritor">
         <liferay-ui:search-container-column-text name="Nombre" property="nombre"/>
+        <liferay-ui:search-container-column-jsp name="Editar" path="/escritorActionButtons.jsp"/>
     </liferay-ui:search-container-row>
 
     <liferay-ui:search-iterator/>

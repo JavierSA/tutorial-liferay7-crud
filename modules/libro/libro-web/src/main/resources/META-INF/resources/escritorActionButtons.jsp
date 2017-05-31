@@ -9,9 +9,10 @@
     final Escritor escritor = (Escritor) row.getObject();
 %>
 
-<portlet:actionURL name="displayEscritorEdition" var="displayEscritorEditionUrl">
-    <portlet:param name="idEscritor" value="<%=String.valueOf(escritor.getEscritorId())%>"/>
-</portlet:actionURL>
+<portlet:renderURL var="displayEscritorEditionUrl">
+    <portlet:param name="mvcRenderCommandName" value="displayEscritorEdition"/>
+    <portlet:param name="idEscritor" value="<%= String.valueOf(escritor.getEscritorId()) %>"/>
+</portlet:renderURL>
 
 <portlet:actionURL name="deleteEscritor" var="deleteEscritorUrl">
     <portlet:param name="idEscritor" value="<%=String.valueOf(escritor.getEscritorId())%>"/>

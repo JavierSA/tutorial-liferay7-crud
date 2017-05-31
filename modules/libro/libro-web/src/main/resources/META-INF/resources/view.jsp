@@ -21,3 +21,7 @@
 
     <liferay-ui:search-iterator/>
 </liferay-ui:search-container>
+
+<portlet:resourceURL id="downloadEscritores" var="downloadEscritoresUrl"/>
+
+<aui:button name="downloadEscritoresButton" type="submit" value="Descargar lista de escritores" onClick="<%=downloadEscritoresUrl%>"/>

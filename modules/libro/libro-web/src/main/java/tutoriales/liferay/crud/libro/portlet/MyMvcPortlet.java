@@ -2,9 +2,6 @@ package tutoriales.liferay.crud.libro.portlet;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-import com.liferay.portal.kernel.theme.ThemeDisplay;
-import com.liferay.portal.kernel.util.ParamUtil;
-import com.liferay.portal.kernel.util.WebKeys;
 import org.osgi.service.component.annotations.Component;
 import tutoriales.liferay.crud.libro.model.Escritor;
 import tutoriales.liferay.crud.libro.service.EscritorLocalServiceUtil;
@@ -24,6 +21,7 @@ import java.util.List;
                 "javax.portlet.display-name=libro-web Portlet",
                 "javax.portlet.init-param.template-path=/",
                 "javax.portlet.init-param.view-template=/view.jsp",
+                "javax.portlet.name=tutoriales_liferay_crud_libro_portlet_MyMvcPortlet",
                 "javax.portlet.resource-bundle=content.Language",
                 "javax.portlet.security-role-ref=power-user,user"
         },
@@ -40,14 +38,6 @@ public class MyMvcPortlet extends MVCPortlet {
         super.render(renderRequest, renderResponse);
     }
 
-    @ProcessAction(name = "addEscritor")
-    public void addEscritor(ActionRequest request, ActionResponse response) {
-        final ThemeDisplay td = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
-        final String nombre = ParamUtil.getString(request, "nombreEscritor");
-
-        EscritorLocalServiceUtil.addEscritor(td.getSiteGroupId(), td.getCompanyId(), td.getUser().getUserId(), td.getUser().getFullName(), nombre);
-    }
-
     @ProcessAction(name = "displayEscritorEdition")
     public void displayEscritorEdition(ActionRequest request, ActionResponse response) throws IOException, PortletException, PortalException {
         final String id = request.getParameter("idEscritor");
@@ -55,23 +45,6 @@ public class MyMvcPortlet extends MVCPortlet {
 
         request.setAttribute("escritor", escritor);
         response.setRenderParameter("mvcPath", "/escritorEdit.jsp");
-    }
-
-    @ProcessAction(name = "editEscritor")
-    public void editEscritor(ActionRequest request, ActionResponse response) throws IOException, PortletException, PortalException {
-        final String id = request.getParameter("idEscritor");
-        final String nombre = request.getParameter("nombreEscritor");
-
-        EscritorLocalServiceUtil.updateEscritor(Long.valueOf(id), nombre);
-
-        response.setRenderParameter("mvcPath", "/view.jsp");
-    }
-
-    @ProcessAction(name = "deleteEscritor")
-    public void deleteEscritor(ActionRequest request, ActionResponse response) throws IOException, PortletException, PortalException {
-        final String id = request.getParameter("idEscritor");
-
-        EscritorLocalServiceUtil.deleteEscritor(Long.valueOf(id));
     }
 
 }
